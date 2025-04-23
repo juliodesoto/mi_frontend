@@ -79,12 +79,16 @@ function Decisiones() {
   // Elimina una decisión del backend y del estado local
   const borrarDecision = async (id) => {
     try {
-      const res = await fetch(`${API_URL}/borrar/${id}`, { method: "DELETE" });
+      const res = await fetch(`${API_URL}/borrar/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
       if (res.ok) {
         setDecisiones((prev) => prev.filter((d) => d.id !== id));
       }
     } catch {}
   };
+  
 
   // Genera un resultado aleatorio (hazlo / no lo hagas)
   const lanzarDecision = (id) => {
